@@ -44,3 +44,48 @@ func TestShow01(t *testing.T) {
 		t.Errorf("test2")
 	}
 }
+
+func TestJudge01(t *testing.T) {
+	b := &Board{
+		tokens: []int{0, 0, 0, 0, 0, 0, 0, 0, 0},
+	}
+
+	b.put(0, 0, "o")
+	b.put(0, 1, "o")
+	b.put(0, 2, "o")
+	b.put(1, 0, "x")
+	b.put(1, 2, "x")
+	b.put(2, 1, "x")
+	if b.judge() != "o" {
+		t.Errorf("test3")
+	}
+}
+
+func TestJudge02(t *testing.T) {
+	b := &Board{
+		tokens: []int{0, 0, 0, 0, 0, 0, 0, 0, 0},
+	}
+
+	b.put(0, 0, "x")
+	b.put(1, 0, "x")
+	b.put(2, 0, "x")
+	b.put(0, 2, "o")
+	b.put(1, 1, "o")
+	b.put(2, 1, "o")
+	if b.judge() != "x" {
+		t.Errorf("test4")
+	}
+}
+
+func TestJudge03(t *testing.T) {
+	b := &Board{
+		tokens: []int{0, 0, 0, 0, 0, 0, 0, 0, 0},
+	}
+
+	b.put(0, 0, "o")
+	b.put(1, 1, "o")
+	b.put(2, 2, "o")
+	if b.judge() != "o" {
+		t.Errorf("test5")
+	}
+}

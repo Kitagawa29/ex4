@@ -38,6 +38,45 @@ func (b *Board) show() {
 	}
 }
 
+//勝敗チェック
+func (b *Board) judge() string {
+	if b.tokens[0]+b.tokens[3]+b.tokens[6] == 3 {
+		return "o"
+	} else if b.tokens[1]+b.tokens[4]+b.tokens[7] == 3 {
+		return "o"
+	} else if b.tokens[2]+b.tokens[5]+b.tokens[8] == 3 {
+		return "o"
+	} else if b.tokens[0]+b.tokens[1]+b.tokens[2] == 3 {
+		return "o"
+	} else if b.tokens[3]+b.tokens[4]+b.tokens[5] == 3 {
+		return "o"
+	} else if b.tokens[6]+b.tokens[7]+b.tokens[8] == 3 {
+		return "o"
+	} else if b.tokens[0]+b.tokens[4]+b.tokens[8] == 3 {
+		return "o"
+	} else if b.tokens[2]+b.tokens[4]+b.tokens[6] == 3 {
+		return "o"
+	} else if b.tokens[0]+b.tokens[3]+b.tokens[6] == -3 {
+		return "x"
+	} else if b.tokens[1]+b.tokens[4]+b.tokens[7] == -3 {
+		return "x"
+	} else if b.tokens[2]+b.tokens[5]+b.tokens[8] == -3 {
+		return "x"
+	} else if b.tokens[0]+b.tokens[1]+b.tokens[2] == -3 {
+		return "x"
+	} else if b.tokens[3]+b.tokens[4]+b.tokens[5] == -3 {
+		return "x"
+	} else if b.tokens[6]+b.tokens[7]+b.tokens[8] == -3 {
+		return "x"
+	} else if b.tokens[0]+b.tokens[4]+b.tokens[8] == -3 {
+		return "x"
+	} else if b.tokens[2]+b.tokens[4]+b.tokens[6] == -3 {
+		return "x"
+	} else {
+		return "undergo"
+	}
+}
+
 func main() {
 	b := &Board{
 		tokens: []int{0, 0, 0, 0, 0, 0, 0, 0, 0},
