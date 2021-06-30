@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 type Board struct {
 	tokens []int // tokens[0] -> (0,0), tokens[1] -> (0,1), ...
 }
@@ -25,6 +27,21 @@ func (b *Board) get(x, y int) string {
 	}
 }
 
-func main() {
+func (b *Board) show() {
+	for i := 0; i < 9; i++ {
+		x := i % 3
+		y := i / 3
+		fmt.Print(b.get(x, y))
+		if (i+1)%3 == 0 {
+			fmt.Println()
+		}
+	}
+}
 
+func main() {
+	b := &Board{
+		tokens: []int{0, 0, 0, 0, 0, 0, 0, 0, 0},
+	}
+	b.put(1, 1, "o")
+	b.show()
 }
