@@ -77,10 +77,44 @@ func (b *Board) judge() string {
 	}
 }
 
+func (b *Board) play() {
+
+	var x, y int
+	var player string
+	m := map[string]string{"o": "1", "x": "2"}
+
+	for i := 0; i < 9; i++ {
+		if (i+1)%2 == 1 {
+			fmt.Print("Player 1: Input (x,y) ")
+			player = "o"
+		} else {
+			fmt.Print("Player 2: Input (x,y) ")
+			player = "x"
+		}
+
+		fmt.Scanf("%d,%d", &y, &x)
+
+		if ((0 <= x) && (x <= 2) && (0 <= y) && (y <= 2)) && (b.get(x, y) == ".") {
+			b.put(x, y, player)
+		} else {
+			i -= 1
+			fmt.Println("Error! Input again!")
+			continue
+		}
+		b.show()
+
+		if b.judge() == player {
+			fmt.Println("Player " + m[player] + " won")
+			return
+		}
+	}
+	fmt.Println("Draw")
+	return
+}
+
 func main() {
 	b := &Board{
 		tokens: []int{0, 0, 0, 0, 0, 0, 0, 0, 0},
 	}
-	b.put(1, 1, "o")
-	b.show()
+	b.play()
 }
